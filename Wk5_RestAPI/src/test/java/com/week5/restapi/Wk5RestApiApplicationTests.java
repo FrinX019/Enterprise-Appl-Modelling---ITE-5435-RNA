@@ -1,0 +1,15 @@
+package com.week5.restapi;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+
+@SpringBootTest
+@ActiveProfiles("test")
+class Wk5RestApiApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
