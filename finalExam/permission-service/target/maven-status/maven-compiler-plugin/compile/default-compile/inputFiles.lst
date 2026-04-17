@@ -1,8 +1,0 @@
-/Users/frinx019/eclipse-workspace/finalExam/permission-service/src/main/java/com/hospital/permissionservice/PermissionServiceApplication.java
-/Users/frinx019/eclipse-workspace/finalExam/permission-service/src/main/java/com/hospital/permissionservice/config/RestClientConfig.java
-/Users/frinx019/eclipse-workspace/finalExam/permission-service/src/main/java/com/hospital/permissionservice/dto/PermissionRequest.java
-/Users/frinx019/eclipse-workspace/finalExam/permission-service/src/main/java/com/hospital/permissionservice/dto/PermissionResponse.java
-/Users/frinx019/eclipse-workspace/finalExam/permission-service/src/main/java/com/hospital/permissionservice/entity/Permission.java
-/Users/frinx019/eclipse-workspace/finalExam/permission-service/src/main/java/com/hospital/permissionservice/repository/PermissionRepository.java
-/Users/frinx019/eclipse-workspace/finalExam/permission-service/src/main/java/com/hospital/permissionservice/ui/PermissionUiController.java
-/Users/frinx019/eclipse-workspace/finalExam/permission-service/src/main/java/com/hospital/permissionservice/web/PermissionController.java

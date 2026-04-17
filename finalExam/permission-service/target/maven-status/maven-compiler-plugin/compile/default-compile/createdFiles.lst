@@ -1,9 +1,0 @@
-com/hospital/permissionservice/ui/PermissionUiController$1.class
-com/hospital/permissionservice/entity/Permission.class
-com/hospital/permissionservice/ui/PermissionUiController.class
-com/hospital/permissionservice/dto/PermissionResponse.class
-com/hospital/permissionservice/dto/PermissionRequest.class
-com/hospital/permissionservice/repository/PermissionRepository.class
-com/hospital/permissionservice/web/PermissionController.class
-com/hospital/permissionservice/PermissionServiceApplication.class
-com/hospital/permissionservice/config/RestClientConfig.class
