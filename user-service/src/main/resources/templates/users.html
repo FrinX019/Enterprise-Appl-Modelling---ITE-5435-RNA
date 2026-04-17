@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Users</title>
+	<link rel="stylesheet" th:href="@{/css/app.css}" />
+</head>
+<body>
+	<div class="wrap">
+		<div th:replace="~{fragments/layout :: nav(active='users')}"></div>
+		<div class="card">
+			<h1 class="pagetitle">Users</h1>
+			<form method="get" class="row">
+				<label>Search <input type="text" name="keyword" th:value="${keyword}" /></label>
+				<button type="submit">Search</button>
+			</form>
+			<table>
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Role ID</th>
+						<th>Name</th>
+						<th>Email</th>
+						<th>DOB</th>
+						<th>Address</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="item : ${items}">
+						<td th:text="${item.userId}">1</td>
+						<td th:text="${item.userRoleId}">-</td>
+						<td th:text="${item.userName}">-</td>
+						<td th:text="${item.userEmail}">-</td>
+						<td th:text="${item.userDob}">-</td>
+						<td th:text="${item.userAddress}">-</td>
+						<td>
+							<form class="inline" method="post" th:action="@{/users/delete}">
+								<input type="hidden" name="id" th:value="${item.userId}" />
+								<button type="submit" class="danger">Delete</button>
+							</form>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="card">
+			<h2>Add user</h2>
+			<form method="post" th:action="@{/users}">
+				<div class="row">
+					<label>Role
+						<select name="userRoleId">
+							<option value="">—</option>
+							<option th:each="r : ${roles}" th:value="${r.roleId}" th:text="${r.roleTitle}">Role</option>
+						</select>
+					</label>
+					<label>Name <input name="userName" required /></label>
+					<label>Email <input name="userEmail" type="email" required /></label>
+					<label>DOB <input name="userDob" type="date" /></label>
+					<label>Address <input name="userAddress" /></label>
+					<button type="submit">Add</button>
+				</div>
+			</form>
+		</div>
+		<div class="card">
+			<h2>Assign role</h2>
+			<form method="post" th:action="@{/users/assign}">
+				<div class="row">
+					<label>User
+						<select name="userId" required>
+							<option value="">—</option>
+							<option th:each="u : ${allUsers}" th:value="${u.userId}"
+								th:text="${u.userName} + ' (#' + ${u.userId} + ')'">User</option>
+						</select>
+					</label>
+					<label>Role
+						<select name="roleId" required>
+							<option value="">—</option>
+							<option th:each="r : ${roles}" th:value="${r.roleId}"
+								th:text="${r.roleTitle} + ' (#' + ${r.roleId} + ')'">Role</option>
+						</select>
+					</label>
+					<button type="submit">Assign</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

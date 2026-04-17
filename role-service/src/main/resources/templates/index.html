@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Role service</title>
+	<link rel="stylesheet" th:href="@{/css/app.css}" />
+</head>
+<body>
+	<div class="wrap">
+		<div th:replace="~{fragments/layout :: nav(active='home')}"></div>
+		<p class="muted">This port only manages roles.</p>
+		<ul class="menu">
+			<li><a href="/roles">Roles</a></li>
+		</ul>
+		<p class="muted" style="margin-top: 1rem;">
+			<a href="http://localhost:8082/">Permissions (8082)</a> —
+			<a href="http://localhost:8083/">Users (8083)</a>
+		</p>
+	</div>
+</body>
+</html>

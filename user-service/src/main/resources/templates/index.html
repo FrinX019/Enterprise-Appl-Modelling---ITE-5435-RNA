@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>User service</title>
+	<link rel="stylesheet" th:href="@{/css/app.css}" />
+</head>
+<body>
+	<div class="wrap">
+		<div th:replace="~{fragments/layout :: nav(active='home')}"></div>
+		<p class="muted">This port only manages users. Role list for forms comes from role-service (8081).</p>
+		<ul class="menu">
+			<li><a href="/users">Users</a></li>
+		</ul>
+		<p class="muted" style="margin-top: 1rem;">
+			<a href="http://localhost:8081/">Roles (8081)</a> —
+			<a href="http://localhost:8082/">Permissions (8082)</a>
+		</p>
+	</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Roles</title>
+	<link rel="stylesheet" th:href="@{/css/app.css}" />
+</head>
+<body>
+	<div class="wrap">
+		<div th:replace="~{fragments/layout :: nav(active='roles')}"></div>
+		<div class="card">
+			<h1 class="pagetitle">Roles</h1>
+			<form method="get" class="row">
+				<label>Search <input type="text" name="keyword" th:value="${keyword}" /></label>
+				<button type="submit">Search</button>
+			</form>
+			<table>
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Title</th>
+						<th>Description</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="item : ${items}">
+						<td th:text="${item.roleId}">1</td>
+						<td th:text="${item.roleTitle}">-</td>
+						<td th:text="${item.roleDescription}">-</td>
+						<td>
+							<form class="inline" method="post" th:action="@{/roles/delete}">
+								<input type="hidden" name="id" th:value="${item.roleId}" />
+								<button type="submit" class="danger">Delete</button>
+							</form>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="card">
+			<h2>Add role</h2>
+			<form method="post" th:action="@{/roles}">
+				<div class="row">
+					<label>Title <input name="roleTitle" required /></label>
+					<label>Description <input name="roleDescription" /></label>
+					<button type="submit">Add</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

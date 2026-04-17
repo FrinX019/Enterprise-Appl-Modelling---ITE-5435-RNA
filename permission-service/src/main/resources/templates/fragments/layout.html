@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div class="topbar" th:fragment="nav(active)">
+		<h1>Permissions — port 8082</h1>
+		<p class="navline">
+			<a href="/" th:classappend="${active}=='home' ? ' nav-active'">Main</a>
+			|
+			<a href="/permissions" th:classappend="${active}=='permissions' ? ' nav-active'">Permissions</a>
+		</p>
+	</div>
+</body>
+</html>
