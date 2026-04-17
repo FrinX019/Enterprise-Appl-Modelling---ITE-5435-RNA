@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Permissions</title>
+	<link rel="stylesheet" th:href="@{/css/app.css}" />
+</head>
+<body>
+	<div class="wrap">
+		<div th:replace="~{fragments/layout :: nav(active='permissions')}"></div>
+		<p class="muted" th:if="${rolesUnavailable}" style="border: 1px solid #c00; padding: 8px; background: #fee;">
+			Could not load roles from role-service. Start <strong>role-service</strong> on port <strong>8081</strong> first, then refresh this page.
+		</p>
+		<div class="card">
+			<h1 class="pagetitle">Permissions</h1>
+			<form method="get" class="row">
+				<label>Search <input type="text" name="keyword" th:value="${keyword}" /></label>
+				<button type="submit">Search</button>
+			</form>
+			<table>
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Role ID</th>
+						<th>Title</th>
+						<th>Module</th>
+						<th>Description</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="item : ${items}">
+						<td th:text="${item.permissionId}">1</td>
+						<td th:text="${item.permissionRoleId}">-</td>
+						<td th:text="${item.permissionTitle}">-</td>
+						<td th:text="${item.permissionModule}">-</td>
+						<td th:text="${item.permissionDescription}">-</td>
+						<td>
+							<form class="inline" method="post" th:action="@{/permissions/delete}">
+								<input type="hidden" name="id" th:value="${item.permissionId}" />
+								<button type="submit" class="danger">Delete</button>
+							</form>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="card">
+			<h2>Add permission</h2>
+			<form method="post" th:action="@{/permissions}">
+				<div class="row">
+					<label>Role id (from role service)
+						<select name="permissionRoleId" required>
+							<option value="">—</option>
+							<option th:each="r : ${roles}" th:value="${r.roleId}"
+								th:text="${r.roleTitle} + ' (#' + ${r.roleId} + ')'">Role</option>
+						</select>
+					</label>
+					<label>Title <input name="permissionTitle" required /></label>
+					<label>Module <input name="permissionModule" /></label>
+					<label>Description <input name="permissionDescription" /></label>
+					<button type="submit">Add</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
